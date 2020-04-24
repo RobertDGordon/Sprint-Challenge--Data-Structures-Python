@@ -110,6 +110,12 @@ class DoublyLinkedList:
         self.delete(node)
         self.add_to_tail(value)
 
+    def insert_node(self, current_node, value):
+        current_node.insert_after(value)
+        self.length += 1
+        if current_node == self.tail:
+            self.tail = self.tail.next
+
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):

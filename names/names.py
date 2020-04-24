@@ -12,6 +12,8 @@ f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
+all_names = names_1 + names_2
+
 duplicates = []  # Return the list of duplicates in this data structure
 
 # Replace the nested for loops below with your improvements
@@ -23,11 +25,16 @@ duplicates = []  # Return the list of duplicates in this data structure
 
 bst = BinarySearchTree("")
 
+# Two loops
 for name in names_1:
     bst.insert(name)
 for name in names_2:
     if bst.contains(name):
         duplicates.append(name)
+
+# One loop
+# for name in all_names:
+#   duplicates.append(bst.insert(name))
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
@@ -37,3 +44,14 @@ print (f"runtime: {end_time - start_time} seconds")
 # Python has built-in tools that allow for a very efficient approach to this problem
 # What's the best time you can accomplish?  Thare are no restrictions on techniques or data
 # structures, but you may not import any additional libraries that you did not write yourself.
+
+# One pass solution:
+#     combine both names lists into one list
+#     run bst.insert once
+#         add bst function to check for equal
+#             if equal, flag value, return flagged value
+#             add value to the duplicates array
+#
+# all_names = names_1 + names_2
+#for name in all_names:
+#   duplicates = bst.insert(name)

@@ -18,10 +18,13 @@ class BinarySearchTree:
                 # we've found a valid parking spot 
                 self.left = BinarySearchTree(value)
         # otherwise, value >= self.value
+        elif value == self.value:
+            return value
         else:
             if self.right:
                 self.right.insert(value)
             else:
+                #add check for equal, return value:
                 self.right = BinarySearchTree(value)
 
     # Return True if the tree contains the value

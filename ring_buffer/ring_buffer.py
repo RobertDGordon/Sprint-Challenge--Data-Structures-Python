@@ -52,7 +52,7 @@ class ArrayRingBuffer:
         self.current = 0
 
     def append(self, item):
-        if len(self.storage) == self.current:
+        if self.current == self.capacity: #checks when buffer is fulll and resets cursor
             self.current = 0
         self.storage[self.current] = item
         self.current += 1

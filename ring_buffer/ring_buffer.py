@@ -8,6 +8,7 @@ class RingBuffer:
 
     def append(self, item):
         # if buffer is full:
+        #     check if current is already at tail, reset
         #     overwrite current
         #     advance current pointer to next node
         # else
